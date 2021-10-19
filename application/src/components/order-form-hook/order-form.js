@@ -7,9 +7,11 @@ import "./orderForm.css";
 const ADD_ORDER_URL = `${SERVER_IP}/api/add-order`;
 
 export default function OrderForm(props) {
-  console.log(props);
-  const [orderItem, setOrderItem] = useState("");
-  const [quantity, setQuantity] = useState("1");
+
+  //testing
+    const [orderItem, setOrderItem] = useState("");
+    const [quantity, setQuantity] = useState("1");
+
 
   const menuItemChosen = (event) => setOrderItem(event.target.value);
   const menuQuantityChosen = (event) => setQuantity(event.target.value);
