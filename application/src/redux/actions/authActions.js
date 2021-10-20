@@ -31,9 +31,9 @@ export const loginUser = (email, password) => {
     };
 }
 
-export const logoutUser = () => {
+export const logoutUser = (email) => {
     return {
         type: LOGOUT,
-        payload: null,
+        payload: email,
     }
 }
