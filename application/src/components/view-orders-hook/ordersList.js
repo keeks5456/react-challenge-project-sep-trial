@@ -22,11 +22,8 @@ const OrdersList = (props) => {
     return strTime;
   };
 
-  console.log(formatAMPM)
-
   return orders.map((order) => {
     const createdDate = new Date(order.createdAt);
-    console.log(createdDate)
     return (
       <div className="row view-order-container" key={order._id}>
         <div className="col-md-4 view-order-left-col p-3">

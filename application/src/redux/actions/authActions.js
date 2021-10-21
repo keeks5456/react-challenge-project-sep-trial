@@ -37,3 +37,4 @@ export const logoutUser = (email) => {
         payload: email,
     }
 }
+
