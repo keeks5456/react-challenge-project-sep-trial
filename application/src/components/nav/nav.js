@@ -30,7 +30,6 @@ const Nav = ({userData}) => {
 };
 
 const mapStateToProps = (state) =>{
-console.log(state)
 return {
   userData: state.auth.email
 }
