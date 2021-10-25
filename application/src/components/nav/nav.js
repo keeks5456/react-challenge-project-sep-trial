@@ -5,11 +5,13 @@ import { logoutUser } from "../../redux/actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 
-const Nav = ({userData}) => {
+const Nav = ({userEmail}) => {
   const dispatch = useDispatch();
-  
+  console.log(userEmail)
   return (
+    <>
     <div className="nav-strip">
+    <h4>{userEmail}</h4>
       <Link to={"/order"} className="nav-link">
         <div className="nav-link-style">
           <label className="nav-label">Order Form</label>
@@ -26,12 +28,13 @@ const Nav = ({userData}) => {
         </div>
       </Link>
     </div>
+    </>
   );
 };
 
 const mapStateToProps = (state) =>{
 return {
-  userData: state.auth.email
+  userEmail: state.auth.email
 }
 }
 
