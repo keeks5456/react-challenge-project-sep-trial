@@ -1,7 +1,12 @@
 import React from "react";
 import { SERVER_IP } from "../../private";
+import { useState } from "react";
+import OrderForm from "../order-form-hook/order-form";
+
 
 const OrdersList = (props) => {
+
+
   console.log(props)
 
   const { orders } = props;
@@ -41,25 +46,6 @@ const OrdersList = (props) => {
       .catch((error) => console.error(error));
   };
 
-  const editOrder = (id) =>{
-    
-    console.log('clicks')
-    // fetch(`${SERVER_IP}/api/edit-order/`, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     id: id,
-    // ordered_by: ordered_by,
-    // quantity: quantity,
-    // menu_item: menu_item
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((response) => console.log("success", JSON.stringify(response)))
-    //   .catch((error) => console.error(error));
-  }
 
   return orders.map((order) => {
     // console.log(order)
@@ -75,7 +61,7 @@ const OrdersList = (props) => {
           <p>Quantity: {order.quantity}</p>
         </div>
         <div className="col-md-4 view-order-right-col">
-          <button onClick={() => editOrder(order.id)} className="btn btn-success">
+          <button onClick={() =>  console.log('i')} className="btn btn-success">
             Edit
           </button>
           <button

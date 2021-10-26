@@ -4,6 +4,9 @@ import { Template } from "../../components";
 import { SERVER_IP } from "../../private";
 import "./orderForm.css";
 
+import OrdersList from "../view-orders-hook/ordersList";
+
+
 const ADD_ORDER_URL = `${SERVER_IP}/api/add-order`;
 
 export default function OrderForm(props) {
@@ -39,6 +42,30 @@ export default function OrderForm(props) {
       .catch((error) => console.error(error));
     
   };
+
+  const editOrder = () =>{
+    
+    console.log('clicks')
+    // fetch(`${SERVER_IP}/api/edit-order/`, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     id: id,
+    // ordered_by: auth.email || "Unknown",
+    // quantity: quantity,
+    // menu_item: orderItem
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((response) => console.log("success", JSON.stringify(response)))
+    //   .catch((error) => console.error(error));
+  }
+
+  const editForm = () =>{
+
+  }
 
   return (
     <Template>
@@ -84,6 +111,7 @@ export default function OrderForm(props) {
             Order It!
           </button>
         </form>
+        <OrderForm editOrder={editOrder} editForm={editForm}/>
       </div>
     </Template>
   );
