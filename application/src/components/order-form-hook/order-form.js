@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { Template } from "../../components";
 import { SERVER_IP } from "../../private";
 import "./orderForm.css";
+import { useHistory } from "react-router";
 
 const ADD_ORDER_URL = `${SERVER_IP}/api/add-order`;
 
 export default function OrderForm(props) {
 
+  console.log(props)
   //testing
     const [orderItem, setOrderItem] = useState("");
     const [quantity, setQuantity] = useState("1");
@@ -18,6 +20,7 @@ export default function OrderForm(props) {
 
   const auth = useSelector((state) => state.auth);
 
+  const history = useHistory()
 
   const submitOrder = (event) => {
     event.preventDefault();
@@ -37,7 +40,7 @@ export default function OrderForm(props) {
       .then((res) => res.json())
       .then((response) => console.log("Success", JSON.stringify(response)))
       .catch((error) => console.error(error));
-    
+      props.history.push('/view-orders')
   };
 
   return (
