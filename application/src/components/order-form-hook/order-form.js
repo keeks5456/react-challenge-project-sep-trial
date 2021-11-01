@@ -6,30 +6,27 @@ import "./orderForm.css";
 
 import OrdersList from "../view-orders-hook/ordersList";
 
-
 const ADD_ORDER_URL = `${SERVER_IP}/api/add-order`;
 
+
 export default function OrderForm(props) {
-
   //testing
-    const [orderItem, setOrderItem] = useState("");
-    const [quantity, setQuantity] = useState("1");
-
+  const [orderItem, setOrderItem] = useState("");
+  const [quantity, setQuantity] = useState("1");
 
   const menuItemChosen = (event) => setOrderItem(event.target.value);
   const menuQuantityChosen = (event) => setQuantity(event.target.value);
 
   const auth = useSelector((state) => state.auth);
 
-
   const submitOrder = (event) => {
     event.preventDefault();
-    if (orderItem === "") return
+    if (orderItem === "") return;
 
     fetch(ADD_ORDER_URL, {
       method: "POST",
       body: JSON.stringify({
-        order_item: orderItem, 
+        order_item: orderItem,
         quantity: quantity,
         ordered_by: auth.email || "Unknown!",
       }),
@@ -40,32 +37,9 @@ export default function OrderForm(props) {
       .then((res) => res.json())
       .then((response) => console.log("Success", JSON.stringify(response)))
       .catch((error) => console.error(error));
-    
+
+    props.history.push("/view-orders");
   };
-
-  const editOrder = () =>{
-    
-    console.log('clicks')
-    // fetch(`${SERVER_IP}/api/edit-order/`, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     id: id,
-    // ordered_by: auth.email || "Unknown",
-    // quantity: quantity,
-    // menu_item: orderItem
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((response) => console.log("success", JSON.stringify(response)))
-    //   .catch((error) => console.error(error));
-  }
-
-  const editForm = () =>{
-
-  }
 
   return (
     <Template>
@@ -111,7 +85,6 @@ export default function OrderForm(props) {
             Order It!
           </button>
         </form>
-        <OrderForm editOrder={editOrder} editForm={editForm}/>
       </div>
     </Template>
   );
